@@ -1,0 +1,6 @@
+{
+  "name": "Satowshi — The Animated World of Satowshi & Friends",
+  "description": "An interactive, animated 2D cartoon experience inspired by Satowshi: Grandma's TV episode player, Spin the Bottle Truth or Dare game, official ID passport, and criminal case files.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

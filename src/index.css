@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-bangers: 'Bangers', cursive;
+    --font-luckiest: 'Luckiest Guy', cursive;
+    --font-fredoka: 'Fredoka', sans-serif;
+    --font-special: 'Special Elite', monospace;
+    --font-marker: 'Permanent Marker', cursive;
+  }
+
+  body {
+    font-family: var(--font-fredoka);
+    background-color: #FEF9EF;
+    color: #1F2937;
+    overflow-x: hidden;
+  }
+
+  /* Comic Display Font */
+  .font-comic {
+    font-family: var(--font-luckiest);
+    letter-spacing: 0.04em;
+  }
+
+  .font-bangers {
+    font-family: var(--font-bangers);
+    letter-spacing: 0.05em;
+  }
+
+  .font-typewriter {
+    font-family: var(--font-special);
+  }
+
+  .font-marker {
+    font-family: var(--font-marker);
+  }
+}
+
+/* Comic Halftone Dot Pattern Background */
+.bg-halftone {
+  background-image: radial-gradient(#d9770622 1.5px, transparent 1.5px), radial-gradient(#d9770622 1.5px, #fef9ef 1.5px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.bg-halftone-dark {
+  background-image: radial-gradient(#ffffff15 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+/* Thick Comic Outline & Shadow Box */
+.comic-box {
+  border: 3.5px solid #111827;
+  box-shadow: 5px 5px 0px #111827;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.comic-box-sm {
+  border: 2.5px solid #111827;
+  box-shadow: 3px 3px 0px #111827;
+}
+
+.comic-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px #111827;
+}
+
+.comic-btn {
+  border: 3px solid #111827;
+  box-shadow: 4px 4px 0px #111827;
+  font-family: var(--font-luckiest);
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.comic-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #111827;
+}
+
+.comic-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #111827;
+}
+
+/* CRT Screen Scanline & Vignette Effect for Grandma's TV */
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+  background: #0d1117;
+}
+
+.crt-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  z-index: 20;
+  background-size: 100% 3px, 4px 100%;
+  pointer-events: none;
+}
+
+.crt-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+  z-index: 21;
+}
+
+/* Rubber Stamp Slam Animation */
+@keyframes stampSlam {
+  0% {
+    transform: scale(3) rotate(-15deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.9) rotate(-7deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-8deg);
+    opacity: 0.95;
+  }
+}
+
+.animate-stamp {
+  animation: stampSlam 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Blinking Cursor for Typewriter */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 0.8s infinite;
+}
+
+/* Gentle Float Animation */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+/* Antenna Wiggle Animation */
+@keyframes antennaWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+
+.animate-antenna {
+  transform-origin: bottom center;
+  animation: antennaWiggle 1.5s ease-in-out infinite;
+}
+
+/* Redacted Text Strike-Through */
+.redacted-marker {
+  background-color: #111827;
+  color: #111827;
+  border-radius: 2px;
+  padding: 0 4px;
+  transition: all 0.2s ease;
+  user-select: none;
+  cursor: help;
+}
+
+.redacted-marker:hover,
+.redacted-marker.revealed {
+  background-color: #FEF08A;
+  color: #854D0E;
+}
+
+/* Hide default cursor on desktop when custom cursor is active */
+@media (pointer: fine) {
+  body.custom-cursor-enabled {
+    cursor: none;
+  }
+  body.custom-cursor-enabled a,
+  body.custom-cursor-enabled button,
+  body.custom-cursor-enabled input,
+  body.custom-cursor-enabled [role="button"] {
+    cursor: none;
+  }
+}
